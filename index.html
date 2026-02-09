@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tyler Lahti - Trail Runner & Adventurer</title>
+    <meta name="description" content="Tyler Lahti: Trail runner, ultrarunner, drone photographer, and peak bagger exploring the outdoors.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-earth: #2a2520;
+            --color-earth-light: #3d3530;
+            --color-sage: #8a9a7c;
+            --color-sage-light: #a8b89a;
+            --color-trail: #c67d4e;
+            --color-sky: #5d8aa8;
+            --color-cream: #f5f3ef;
+            --color-off-white: #fafaf8;
+            --font-display: 'Crimson Pro', serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+```
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: var(--font-body);
+        background: var(--color-cream);
+        color: var(--color-earth);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background: linear-gradient(135deg, var(--color-earth) 0%, var(--color-earth-light) 100%);
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(141, 154, 124, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(93, 138, 168, 0.1) 0%, transparent 50%);
+        animation: breathe 8s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 0.7; }
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 2rem;
+        animation: fadeInUp 1.2s ease-out;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hero h1 {
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 10vw, 7rem);
+        font-weight: 700;
+        color: var(--color-off-white);
+        letter-spacing: -0.03em;
+        line-height: 0.95;
+        margin-bottom: 1.5rem;
+        animation: fadeInUp 1.2s ease-out 0.2s both;
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        color: var(--color-sage-light);
+        font-weight: 400;
+        max-width: 600px;
+        margin: 0 auto 3rem;
+        animation: fadeInUp 1.2s ease-out 0.4s both;
+    }
+
+    .scroll-indicator {
+        position: absolute;
+        bottom: 3rem;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translate(-50%, 0); }
+        50% { transform: translate(-50%, 10px); }
+    }
+
+    .scroll-indicator svg {
+        width: 30px;
+        height: 30px;
+        stroke: var(--color-sage);
+        stroke-width: 2;
+        fill: none;
+    }
+
+    /* Main Content */
+    main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+    }
+
+    section {
+        margin-bottom: 6rem;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInSection 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeInSection {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
+
+    h2 {
+        font-family: var(--font-display);
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 700;
+        color: var(--color-earth);
+        margin-bottom: 2rem;
+        letter-spacing: -0.02em;
+        position: relative;
+        display: inline-block;
+    }
+
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: var(--color-trail);
+        border-radius: 2px;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    .card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 2px 8px rgba(42, 37, 32, 0.08);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(138, 154, 124, 0.1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--color-trail), var(--color-sky));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 32px rgba(42, 37, 32, 0.15);
+    }
+
+    .card h3 {
+        font-family: var(--font-display);
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: var(--color-earth);
+        margin-bottom: 0.75rem;
+    }
+
+    .card p {
+        color: var(--color-earth-light);
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+    }
+
+    .card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--color-trail);
+        text-decoration: none;
+        font-weight: 500;
+        transition: gap 0.3s ease;
+    }
+
+    .card-link:hover {
+        gap: 0.75rem;
+    }
+
+    .card-link svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+        stroke-width: 2;
+        fill: none;
+    }
+
+    /* Links List */
+    .links-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 700px;
+    }
+
+    .link-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.25rem 1.5rem;
+        background: white;
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--color-earth);
+        border: 1px solid rgba(138, 154, 124, 0.15);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .link-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: var(--color-sage);
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+    }
+
+    .link-item:hover::before {
+        transform: scaleY(1);
+    }
+
+    .link-item:hover {
+        transform: translateX(8px);
+        border-color: var(--color-sage);
+        box-shadow: 0 4px 16px rgba(42, 37, 32, 0.1);
+    }
+
+    .link-icon {
+        width: 24px;
+        height: 24px;
+        stroke: var(--color-sage);
+        stroke-width: 2;
+        fill: none;
+        flex-shrink: 0;
+    }
+
+    .link-text {
+        font-weight: 500;
+        flex: 1;
+    }
+
+    .link-arrow {
+        width: 20px;
+        height: 20px;
+        stroke: var(--color-earth-light);
+        stroke-width: 2;
+        fill: none;
+        transition: transform 0.3s ease;
+    }
+
+    .link-item:hover .link-arrow {
+        transform: translateX(4px);
+    }
+
+    /* Gallery */
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .gallery-item {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        background: var(--color-earth-light);
+        cursor: pointer;
+        transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover {
+        transform: scale(1.03);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1.5rem;
+        background: linear-gradient(to top, rgba(42, 37, 32, 0.9), transparent);
+        color: white;
+        transform: translateY(100%);
+        transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+        transform: translateY(0);
+    }
+
+    .gallery-credit {
+        font-size: 0.85rem;
+        opacity: 0.9;
+    }
+
+    /* Footer */
+    footer {
+        background: var(--color-earth);
+        color: var(--color-sage-light);
+        padding: 3rem 2rem;
+        text-align: center;
+        margin-top: 6rem;
+    }
+
+    footer p {
+        margin-bottom: 1rem;
+    }
+
+    footer a {
+        color: var(--color-trail);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+        color: var(--color-sage-light);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        main {
+            padding: 4rem 1.5rem;
+        }
+
+        .cards-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .gallery {
+            grid-template-columns: 1fr;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Tyler Lahti</h1>
+            <p class="hero-subtitle">Trail runner. Ultrarunner. Drone photographer. Peak bagger. Exploring the wild places.</p>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </header>
+
+```
+<main>
+    <section id="featured">
+        <h2>Featured</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Dronestagram</h3>
+                <p>Amateur drone photography capturing mountain landscapes and trail perspectives from above.</p>
+                <a href="https://www.instagram.com/lahti_drone" class="card-link" target="_blank" rel="noopener noreferrer">
+                    View Gallery
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="card">
+                <h3>Professional</h3>
+                <p>Connect with me professionally and see my career journey.</p>
+                <a href="https://www.linkedin.com/in/tylerlahti/" class="card-link" target="_blank" rel="noopener noreferrer">
+                    LinkedIn Profile
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="card">
+                <h3>Creative Commons</h3>
+                <p>All my outdoor photography freely available under Creative Commons licensing.</p>
+                <a href="https://www.flickr.com/people/190991262@N04/" class="card-link" target="_blank" rel="noopener noreferrer">
+                    Browse Flickr
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="adventures">
+        <h2>Adventures & Achievements</h2>
+        <div class="links-list">
+            <a href="https://fastestknowntime.com/fkt/tyler-lahti-bartram-trail-nc-ga-2020-11-07" class="link-item" target="_blank" rel="noopener noreferrer">
+                <svg class="link-icon" viewBox="0 0 24 24">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+                <span class="link-text">Bartram Trail - GA Section FKT</span>
+                <svg class="link-arrow" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <a href="https://ultrasignup.com/results_participant.aspx?fname=Tyler&lname=Lahti" class="link-item" target="_blank" rel="noopener noreferrer">
+                <svg class="link-icon" viewBox="0 0 24 24">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                <span class="link-text">Ultrasignup Race Results</span>
+                <svg class="link-arrow" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <a href="https://peakbagger.com/climber/climber.aspx?cid=31816" class="link-item" target="_blank" rel="noopener noreferrer">
+                <svg class="link-icon" viewBox="0 0 24 24">
+                    <path d="M 3 20 L 9 4 L 15 14 L 21 8 L 21 20 Z"/>
+                </svg>
+                <span class="link-text">Peakbagger Summit Log</span>
+                <svg class="link-arrow" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <a href="https://trailrunner.com/trail-news/25th-anniversary-challenge-trail-runner-profile-tyler-lahti/" class="link-item" target="_blank" rel="noopener noreferrer">
+                <svg class="link-icon" viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+                <span class="link-text">Trail Runner Magazine Profile</span>
+                <svg class="link-arrow" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <a href="https://en.wikipedia.org/wiki/Special:Contributions/Lahti213" class="link-item" target="_blank" rel="noopener noreferrer">
+                <svg class="link-icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    <line x1="2" y1="12" x2="22" y2="12"/>
+                </svg>
+                <span class="link-text">Wikipedia Contributions</span>
+                <svg class="link-arrow" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Photography</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SShUOPhZXVGXk0azo6Yf5fIUMA9CKjSWZZ3PDNF3tV7mvOoRkl_gQ01Xn5ccCLBg09EjzEaZiZU3MREaZb-lsdCDF1qhf4fd_Sh09oHTHPo4Ub3NAzKJTDY9B14u-Al15r-QorMi1LQPMpKWPMj_AWwO_-RNYJlL0dzg5lbWWnDF32mvQljOSa-=w1280" alt="Mountain landscape">
+                <div class="gallery-overlay">
+                    <p class="gallery-credit">Tyler Lahti, CC BY-SA 2.0</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SRgwJSSAGAYkELC3Fsy6QafY4owZGUkHZpGWV528ApJ30SENnxPxQL_YsXzpaL7epnANDiQW0MjwUOWq-DcjCl1AA9dJ789IlqJLYOapwJ4Z41DcXIXvGuUHiN-_MO69OUI-ckpYqWqKoHacfcfxWTCbTBbK6kMo_1YDkfWfuzh962QWSKtWkHsEaU=w1280" alt="Trail view">
+                <div class="gallery-overlay">
+                    <p class="gallery-credit">Lahti213, CC BY-SA 4.0</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SSDM8uAb0sxEQ6da3TCM-ZUS_8U21G6n-ldku09Seto93kJR1i-Li0Rz5dAar-QDmGIdRZCsca2rOUfMaiHfq7LcBACOjwPALtl-lGjmwVLpk4MZmvzbYkCnG_jM3YMwJHwiHM-b50Ejp-Sb1WYHJOfzlHW1GLfgv_LUw64OBJOqqclzWH56T2bGUA=w1280" alt="Mountain panorama">
+                <div class="gallery-overlay">
+                    <p class="gallery-credit">Tyler Lahti, CC BY-SA 2.0</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Tyler Lahti. All photography licensed under Creative Commons.</p>
+    <p>Built for adventure enthusiasts and outdoor lovers.</p>
+</footer>
+```
+
+</body>
+</html>
