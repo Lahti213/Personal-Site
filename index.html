@@ -1,565 +1,445 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tyler Lahti - Trail Runner & Adventurer</title>
-    <meta name="description" content="Tyler Lahti: Trail runner, ultrarunner, drone photographer, and peak bagger exploring the outdoors.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-earth: #2a2520;
-            --color-earth-light: #3d3530;
-            --color-sage: #8a9a7c;
-            --color-sage-light: #a8b89a;
-            --color-trail: #c67d4e;
-            --color-sky: #5d8aa8;
-            --color-cream: #f5f3ef;
-            --color-off-white: #fafaf8;
-            --font-display: 'Crimson Pro', serif;
-            --font-body: 'DM Sans', sans-serif;
-        }
-
-```
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tyler Lahti — Trail Runner, Peak Bagger, Drone Photographer</title>
+  <meta name="description" content="Tyler Lahti: trail runner, ultrarunner, drone photographer, and peak bagger exploring the wild places.">
+  <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161412" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tyler Lahti">
+  <meta property="og:description" content="Trail runner. Ultrarunner. Drone photographer. Peak bagger.">
+  <meta property="og:image" content="https://live.staticflickr.com/65535/51836169426_e3ae10142a_k.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23c4622d'/%3E%3Cpath d='M4 25 L12 11 L17 19 L21 14 L28 25 Z' fill='%23f4f1ea'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --surface: #fffdf8;
+      --ink: #1d1a17;
+      --ink-soft: #5a524a;
+      --line: #ddd5c7;
+      --accent: #c4622d;      /* trail clay */
+      --accent-ink: #a64f20;
+      --moss: #5f7350;
+      --topo: rgba(29, 26, 23, 0.09);
+      --shadow: 0 1px 2px rgba(29,26,23,.06), 0 8px 24px rgba(29,26,23,.06);
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --font-mono: 'DM Mono', ui-monospace, monospace;
+      --max: 1120px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #161412;
+        --surface: #1f1c19;
+        --ink: #f1ece3;
+        --ink-soft: #b2a898;
+        --line: #353029;
+        --accent: #e0814c;
+        --accent-ink: #f09a68;
+        --moss: #9db38b;
+        --topo: rgba(241, 236, 227, 0.07);
+        --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+      }
     }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
-        font-family: var(--font-body);
-        background: var(--color-cream);
-        color: var(--color-earth);
-        line-height: 1.6;
-        overflow-x: hidden;
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
     }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--bg); padding: 8px 12px; border-radius: 6px; z-index: 10; }
+    .skip:focus { left: 8px; }
 
-    /* Hero Section */
-    .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        background: linear-gradient(135deg, var(--color-earth) 0%, var(--color-earth-light) 100%);
-        overflow: hidden;
+    /* ---------- Nav ---------- */
+    .nav {
+      position: sticky; top: 0; z-index: 5;
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      backdrop-filter: saturate(1.4) blur(10px);
+      -webkit-backdrop-filter: saturate(1.4) blur(10px);
+      border-bottom: 1px solid transparent;
     }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; text-decoration: none; letter-spacing: -0.01em; }
+    .brand span { color: var(--accent); }
+    .nav ul { list-style: none; display: flex; gap: 28px; }
+    .nav ul a { text-decoration: none; font-size: .92rem; color: var(--ink-soft); transition: color .2s; }
+    .nav ul a:hover { color: var(--ink); }
 
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: 
-            radial-gradient(circle at 20% 30%, rgba(141, 154, 124, 0.15) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(93, 138, 168, 0.1) 0%, transparent 50%);
-        animation: breathe 8s ease-in-out infinite;
+    /* ---------- Hero ---------- */
+    .hero { position: relative; overflow: hidden; padding: 96px 0 112px; }
+    .topo {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      fill: none; stroke: var(--topo); stroke-width: 1.2;
+      pointer-events: none;
     }
-
-    @keyframes breathe {
-        0%, 100% { opacity: 0.4; }
-        50% { opacity: 0.7; }
+    .hero .wrap { position: relative; }
+    .eyebrow {
+      font-family: var(--font-mono); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--moss); display: flex; align-items: center; gap: 10px; margin-bottom: 28px;
     }
-
-    .hero-content {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        padding: 2rem;
-        animation: fadeInUp 1.2s ease-out;
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(40px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
+    .eyebrow::before { content: ''; width: 28px; height: 1px; background: currentColor; }
     .hero h1 {
-        font-family: var(--font-display);
-        font-size: clamp(3rem, 10vw, 7rem);
-        font-weight: 700;
-        color: var(--color-off-white);
-        letter-spacing: -0.03em;
-        line-height: 0.95;
-        margin-bottom: 1.5rem;
-        animation: fadeInUp 1.2s ease-out 0.2s both;
+      font-family: var(--font-display);
+      font-variation-settings: 'opsz' 144;
+      font-weight: 800;
+      font-size: clamp(3.4rem, 11vw, 8.5rem);
+      line-height: .92;
+      letter-spacing: -0.035em;
     }
-
-    .hero-subtitle {
-        font-size: clamp(1.1rem, 2vw, 1.4rem);
-        color: var(--color-sage-light);
-        font-weight: 400;
-        max-width: 600px;
-        margin: 0 auto 3rem;
-        animation: fadeInUp 1.2s ease-out 0.4s both;
+    .hero h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .roles { display: flex; flex-wrap: wrap; gap: 10px; margin: 36px 0 0; list-style: none; }
+    .roles li {
+      font-size: .92rem; font-weight: 500; padding: 7px 14px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--surface);
     }
-
-    .scroll-indicator {
-        position: absolute;
-        bottom: 3rem;
-        left: 50%;
-        transform: translateX(-50%);
-        animation: bounce 2s infinite;
+    .hero p.lede { max-width: 540px; margin-top: 28px; font-size: 1.15rem; color: var(--ink-soft); }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+      font-weight: 500; font-size: .95rem; padding: 12px 20px; border-radius: 10px;
+      transition: transform .2s, background .2s, border-color .2s;
     }
+    .btn-primary { background: var(--ink); color: var(--bg); }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-ghost { border: 1px solid var(--line); }
+    .btn-ghost:hover { border-color: var(--ink-soft); }
+    .btn svg { width: 16px; height: 16px; }
 
-    @keyframes bounce {
-        0%, 100% { transform: translate(-50%, 0); }
-        50% { transform: translate(-50%, 10px); }
-    }
-
-    .scroll-indicator svg {
-        width: 30px;
-        height: 30px;
-        stroke: var(--color-sage);
-        stroke-width: 2;
-        fill: none;
-    }
-
-    /* Main Content */
-    main {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 6rem 2rem;
-    }
-
-    section {
-        margin-bottom: 6rem;
-        opacity: 0;
-        transform: translateY(30px);
-        animation: fadeInSection 0.8s ease-out forwards;
-    }
-
-    @keyframes fadeInSection {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    section:nth-child(1) { animation-delay: 0.1s; }
-    section:nth-child(2) { animation-delay: 0.2s; }
-    section:nth-child(3) { animation-delay: 0.3s; }
-
+    /* ---------- Sections ---------- */
+    section.block { padding: 88px 0; border-top: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: 220px 1fr; gap: 32px; margin-bottom: 40px; align-items: baseline; }
+    .section-num { font-family: var(--font-mono); font-size: .8rem; color: var(--ink-soft); letter-spacing: .06em; text-transform: uppercase; }
     h2 {
-        font-family: var(--font-display);
-        font-size: clamp(2.5rem, 5vw, 3.5rem);
-        font-weight: 700;
-        color: var(--color-earth);
-        margin-bottom: 2rem;
-        letter-spacing: -0.02em;
-        position: relative;
-        display: inline-block;
+      font-family: var(--font-display); font-weight: 600;
+      font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.05; letter-spacing: -0.02em;
     }
+    h2 + p { color: var(--ink-soft); margin-top: 12px; max-width: 560px; }
+    .section-body { margin-left: 252px; }
 
-    h2::after {
-        content: '';
-        position: absolute;
-        bottom: -8px;
-        left: 0;
-        width: 60px;
-        height: 4px;
-        background: var(--color-trail);
-        border-radius: 2px;
+    /* Feature: FKT highlight */
+    .feature {
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+      box-shadow: var(--shadow); text-decoration: none; margin-bottom: 20px;
+      transition: transform .3s, box-shadow .3s;
     }
+    .feature:hover { transform: translateY(-3px); }
+    .feature-text { padding: 36px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; }
+    .tag {
+      font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--accent-ink);
+    }
+    .feature h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.9rem; line-height: 1.1; margin-top: 10px; letter-spacing: -0.01em; }
+    .feature p { color: var(--ink-soft); margin-top: 12px; }
+    .feature .more { font-weight: 500; display: inline-flex; gap: 8px; align-items: center; }
+    .feature .more svg { width: 16px; height: 16px; transition: transform .25s; }
+    .feature:hover .more svg { transform: translateX(4px); }
+    .feature-art { background: var(--ink); position: relative; min-height: 240px; }
+    .feature-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 
-    /* Cards Grid */
-    .cards-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
+    /* Log list */
+    .log { list-style: none; border-top: 1px solid var(--line); }
+    .log li { border-bottom: 1px solid var(--line); }
+    .log a {
+      display: grid; grid-template-columns: 140px 1fr auto; gap: 20px; align-items: center;
+      padding: 22px 4px; text-decoration: none; transition: padding .25s, background .25s;
     }
-
-    .card {
-        background: white;
-        border-radius: 12px;
-        padding: 2rem;
-        box-shadow: 0 2px 8px rgba(42, 37, 32, 0.08);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1px solid rgba(138, 154, 124, 0.1);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background: linear-gradient(90deg, var(--color-trail), var(--color-sky));
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .card:hover::before {
-        transform: scaleX(1);
-    }
-
-    .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 12px 32px rgba(42, 37, 32, 0.15);
-    }
-
-    .card h3 {
-        font-family: var(--font-display);
-        font-size: 1.75rem;
-        font-weight: 600;
-        color: var(--color-earth);
-        margin-bottom: 0.75rem;
-    }
-
-    .card p {
-        color: var(--color-earth-light);
-        margin-bottom: 1.5rem;
-        font-size: 1rem;
-    }
-
-    .card-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--color-trail);
-        text-decoration: none;
-        font-weight: 500;
-        transition: gap 0.3s ease;
-    }
-
-    .card-link:hover {
-        gap: 0.75rem;
-    }
-
-    .card-link svg {
-        width: 18px;
-        height: 18px;
-        stroke: currentColor;
-        stroke-width: 2;
-        fill: none;
-    }
-
-    /* Links List */
-    .links-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        max-width: 700px;
-    }
-
-    .link-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1.25rem 1.5rem;
-        background: white;
-        border-radius: 10px;
-        text-decoration: none;
-        color: var(--color-earth);
-        border: 1px solid rgba(138, 154, 124, 0.15);
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .link-item::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 4px;
-        background: var(--color-sage);
-        transform: scaleY(0);
-        transition: transform 0.3s ease;
-    }
-
-    .link-item:hover::before {
-        transform: scaleY(1);
-    }
-
-    .link-item:hover {
-        transform: translateX(8px);
-        border-color: var(--color-sage);
-        box-shadow: 0 4px 16px rgba(42, 37, 32, 0.1);
-    }
-
-    .link-icon {
-        width: 24px;
-        height: 24px;
-        stroke: var(--color-sage);
-        stroke-width: 2;
-        fill: none;
-        flex-shrink: 0;
-    }
-
-    .link-text {
-        font-weight: 500;
-        flex: 1;
-    }
-
-    .link-arrow {
-        width: 20px;
-        height: 20px;
-        stroke: var(--color-earth-light);
-        stroke-width: 2;
-        fill: none;
-        transition: transform 0.3s ease;
-    }
-
-    .link-item:hover .link-arrow {
-        transform: translateX(4px);
-    }
+    .log a:hover { padding-left: 14px; padding-right: 14px; background: var(--surface); }
+    .log .kind { font-family: var(--font-mono); font-size: .78rem; color: var(--moss); text-transform: uppercase; letter-spacing: .06em; }
+    .log .title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; letter-spacing: -0.01em; }
+    .log .desc { display: block; font-family: var(--font-body); font-size: .95rem; font-weight: 400; color: var(--ink-soft); margin-top: 2px; letter-spacing: 0; }
+    .log .arrow { width: 20px; height: 20px; color: var(--ink-soft); transition: transform .25s, color .25s; }
+    .log a:hover .arrow { transform: translate(3px, -3px); color: var(--accent); }
 
     /* Gallery */
-    .gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
-        margin-top: 3rem;
+    .gallery { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 220px; gap: 14px; }
+    .shot {
+      position: relative; border-radius: 14px; overflow: hidden; margin: 0;
+      background: linear-gradient(135deg, #3b4a36, #2a2520);
     }
+    .shot:nth-child(1) { grid-column: span 4; grid-row: span 2; }
+    .shot:nth-child(2) { grid-column: span 2; }
+    .shot:nth-child(3) { grid-column: span 2; }
+    .shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+    .shot:hover img { transform: scale(1.05); }
+    .shot figcaption {
+      position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 18px 14px;
+      background: linear-gradient(to top, rgba(0,0,0,.7), transparent);
+      color: #fff; display: flex; justify-content: space-between; align-items: end; gap: 12px;
+    }
+    .shot .place { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
+    .shot .credit { font-family: var(--font-mono); font-size: .7rem; opacity: .8; text-align: right; }
+    .gallery-foot { margin-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; color: var(--ink-soft); font-size: .95rem; }
+    .gallery-foot a { color: var(--accent-ink); font-weight: 500; text-decoration: none; }
+    .gallery-foot a:hover { text-decoration: underline; }
 
-    .gallery-item {
-        position: relative;
-        border-radius: 12px;
-        overflow: hidden;
-        aspect-ratio: 4/3;
-        background: var(--color-earth-light);
-        cursor: pointer;
-        transition: transform 0.4s ease;
+    /* Elsewhere */
+    .links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .link-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 26px;
+      text-decoration: none; display: flex; flex-direction: column; gap: 6px;
+      transition: transform .25s, border-color .25s;
     }
-
-    .gallery-item:hover {
-        transform: scale(1.03);
-    }
-
-    .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.6s ease;
-    }
-
-    .gallery-item:hover img {
-        transform: scale(1.1);
-    }
-
-    .gallery-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 1.5rem;
-        background: linear-gradient(to top, rgba(42, 37, 32, 0.9), transparent);
-        color: white;
-        transform: translateY(100%);
-        transition: transform 0.4s ease;
-    }
-
-    .gallery-item:hover .gallery-overlay {
-        transform: translateY(0);
-    }
-
-    .gallery-credit {
-        font-size: 0.85rem;
-        opacity: 0.9;
-    }
+    .link-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .link-card .icon { width: 28px; height: 28px; color: var(--accent); margin-bottom: 14px; }
+    .link-card strong { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; }
+    .link-card span { color: var(--ink-soft); font-size: .95rem; }
+    .link-card .handle { font-family: var(--font-mono); font-size: .8rem; margin-top: auto; padding-top: 14px; color: var(--ink-soft); }
 
     /* Footer */
-    footer {
-        background: var(--color-earth);
-        color: var(--color-sage-light);
-        padding: 3rem 2rem;
-        text-align: center;
-        margin-top: 6rem;
+    footer { border-top: 1px solid var(--line); padding: 40px 0 56px; color: var(--ink-soft); font-size: .9rem; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    footer a { color: var(--ink); }
+
+    /* Entrance motion */
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .hero .eyebrow, .hero h1, .hero .roles, .hero .lede, .hero .cta { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+    .hero h1 { animation-delay: .08s; }
+    .hero .roles { animation-delay: .18s; }
+    .hero .lede { animation-delay: .26s; }
+    .hero .cta { animation-delay: .34s; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
     }
 
-    footer p {
-        margin-bottom: 1rem;
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .section-head { grid-template-columns: 1fr; gap: 10px; }
+      .section-body { margin-left: 0; }
+      .feature { grid-template-columns: 1fr; }
+      .feature-art { min-height: 180px; order: -1; }
+      .links { grid-template-columns: 1fr 1fr; }
     }
-
-    footer a {
-        color: var(--color-trail);
-        text-decoration: none;
-        transition: color 0.3s ease;
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      .wrap { padding: 0 16px; }
+      .nav ul { gap: 18px; }
+      .nav ul li:nth-child(n+3) { display: none; }
+      .hero { padding: 64px 0 80px; }
+      section.block { padding: 64px 0; }
+      .feature-text { padding: 26px; }
+      .log a { grid-template-columns: 1fr auto; gap: 4px 12px; }
+      .log .kind { grid-column: 1 / -1; }
+      .log .arrow { grid-row: 2; grid-column: 2; }
+      .gallery { grid-template-columns: 1fr; grid-auto-rows: 240px; }
+      .shot:nth-child(n) { grid-column: auto; grid-row: auto; }
+      .links { grid-template-columns: 1fr; }
     }
-
-    footer a:hover {
-        color: var(--color-sage-light);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        main {
-            padding: 4rem 1.5rem;
-        }
-
-        .cards-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .gallery {
-            grid-template-columns: 1fr;
-        }
-
-        section {
-            margin-bottom: 4rem;
-        }
-    }
-</style>
-```
-
+  </style>
 </head>
 <body>
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Tyler Lahti</h1>
-            <p class="hero-subtitle">Trail runner. Ultrarunner. Drone photographer. Peak bagger. Exploring the wild places.</p>
-        </div>
-        <div class="scroll-indicator">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 5v14M19 12l-7 7-7-7"/>
-            </svg>
-        </div>
-    </header>
+  <a class="skip" href="#main">Skip to content</a>
 
-```
-<main>
-    <section id="featured">
-        <h2>Featured</h2>
-        <div class="cards-grid">
-            <div class="card">
-                <h3>Dronestagram</h3>
-                <p>Amateur drone photography capturing mountain landscapes and trail perspectives from above.</p>
-                <a href="https://www.instagram.com/lahti_drone" class="card-link" target="_blank" rel="noopener noreferrer">
-                    View Gallery
-                    <svg viewBox="0 0 24 24">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-            </div>
-            <div class="card">
-                <h3>Professional</h3>
-                <p>Connect with me professionally.</p>
-                <a href="https://www.linkedin.com/in/tylerlahti/" class="card-link" target="_blank" rel="noopener noreferrer">
-                    LinkedIn Profile
-                    <svg viewBox="0 0 24 24">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-            </div>
-            <div class="card">
-                <h3>Creative Commons</h3>
-                <p>All my outdoor photography freely available under Creative Commons licensing.</p>
-                <a href="https://www.flickr.com/people/190991262@N04/" class="card-link" target="_blank" rel="noopener noreferrer">
-                    Browse Flickr
-                    <svg viewBox="0 0 24 24">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-            </div>
+  <nav class="nav" aria-label="Primary">
+    <div class="wrap">
+      <a class="brand" href="#top">Tyler Lahti<span>.</span></a>
+      <ul>
+        <li><a href="#adventures">Adventures</a></li>
+        <li><a href="#photos">Photos</a></li>
+        <li><a href="#elsewhere">Elsewhere</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <svg class="topo" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<path d="M1022 260 L1023 263 L1023 266 L1022 268 L1021 271 L1019 274 L1017 276 L1014 278 L1012 280 L1009 281 L1006 283 L1003 284 L1000 286 L997 287 L994 288 L990 289 L987 289 L983 289 L980 289 L977 289 L973 289 L970 288 L967 287 L963 286 L960 286 L957 285 L954 283 L950 282 L947 280 L945 278 L943 276 L941 273 L940 271 L940 268 L940 265 L941 263 L941 260 L942 258 L943 255 L944 253 L945 250 L945 248 L946 246 L947 243 L949 241 L951 238 L953 236 L956 234 L959 233 L962 232 L966 231 L969 230 L973 229 L976 229 L980 229 L984 229 L987 229 L991 230 L994 231 L997 232 L1000 234 L1003 236 L1005 238 L1007 240 L1009 242 L1010 244 L1012 246 L1013 248 L1015 250 L1017 253 L1019 255 L1021 257Z"/>
+<path d="M1076 260 L1077 266 L1077 273 L1076 279 L1073 285 L1068 291 L1063 296 L1057 300 L1051 304 L1045 308 L1038 311 L1032 315 L1025 318 L1018 321 L1011 323 L1003 325 L996 326 L988 327 L980 326 L972 326 L965 325 L957 323 L950 322 L942 320 L934 318 L927 316 L919 314 L912 310 L906 306 L900 302 L895 296 L892 290 L890 284 L890 278 L891 272 L892 266 L894 260 L895 255 L897 249 L898 244 L900 238 L901 233 L903 227 L905 221 L909 216 L913 210 L919 206 L925 202 L932 198 L939 195 L947 193 L955 192 L963 190 L972 190 L980 189 L988 190 L997 191 L1005 192 L1012 195 L1019 198 L1026 202 L1031 206 L1036 211 L1040 215 L1044 220 L1048 225 L1052 229 L1056 234 L1060 238 L1065 243 L1069 248 L1073 254Z"/>
+<path d="M1131 260 L1133 270 L1132 280 L1129 290 L1124 299 L1117 307 L1108 315 L1099 322 L1090 328 L1080 334 L1070 340 L1061 345 L1050 350 L1040 355 L1028 358 L1017 361 L1005 363 L992 364 L980 364 L968 363 L956 361 L944 359 L932 357 L920 355 L908 352 L896 349 L884 344 L873 339 L863 333 L855 325 L848 316 L844 307 L842 297 L842 287 L843 278 L845 269 L847 260 L850 252 L852 243 L853 235 L855 226 L856 217 L859 208 L863 199 L868 191 L875 182 L884 175 L894 169 L905 164 L917 159 L929 156 L941 153 L954 151 L967 150 L980 150 L993 150 L1006 151 L1018 154 L1030 158 L1041 163 L1051 170 L1059 176 L1066 184 L1073 191 L1079 198 L1085 205 L1092 212 L1099 219 L1107 226 L1114 233 L1121 242 L1127 250Z"/>
+<path d="M1187 260 L1188 274 L1187 287 L1182 300 L1174 312 L1164 324 L1153 334 L1141 343 L1128 352 L1115 360 L1102 368 L1089 376 L1075 382 L1061 389 L1046 394 L1030 397 L1013 400 L997 401 L980 401 L964 399 L947 398 L931 395 L915 393 L898 390 L881 386 L865 382 L849 376 L834 369 L820 359 L809 349 L801 336 L797 323 L794 310 L795 297 L797 284 L800 272 L802 260 L805 249 L806 237 L808 226 L809 214 L811 202 L814 189 L820 177 L827 165 L837 154 L849 144 L863 136 L878 129 L894 123 L910 119 L927 115 L945 112 L962 110 L980 109 L998 110 L1015 112 L1032 116 L1048 122 L1062 129 L1075 138 L1086 148 L1096 158 L1105 167 L1114 177 L1123 186 L1133 195 L1143 204 L1154 213 L1164 223 L1174 235 L1182 247Z"/>
+<path d="M1243 260 L1244 277 L1241 294 L1234 310 L1223 326 L1210 340 L1196 352 L1181 364 L1166 375 L1150 386 L1134 396 L1118 406 L1101 415 L1082 423 L1063 429 L1043 434 L1022 437 L1001 438 L980 438 L959 436 L938 434 L918 432 L897 429 L875 426 L854 422 L833 416 L812 408 L793 398 L777 386 L764 372 L755 356 L750 339 L749 322 L750 306 L752 290 L755 275 L758 260 L760 246 L761 231 L762 217 L763 201 L765 186 L769 170 L776 154 L786 139 L799 126 L814 114 L832 103 L851 94 L871 87 L892 81 L913 76 L935 72 L958 70 L980 69 L1002 70 L1025 73 L1046 78 L1065 86 L1083 96 L1099 108 L1113 120 L1125 132 L1137 144 L1148 155 L1161 166 L1174 177 L1188 188 L1202 200 L1216 213 L1228 228 L1238 243Z"/>
+<path d="M1300 260 L1300 281 L1294 301 L1284 320 L1271 338 L1255 355 L1238 370 L1220 385 L1203 398 L1184 411 L1166 424 L1147 436 L1126 447 L1104 457 L1080 464 L1056 470 L1031 473 L1005 474 L980 474 L955 473 L930 472 L904 470 L878 467 L852 463 L825 458 L799 451 L775 441 L752 429 L734 413 L720 395 L710 375 L706 355 L705 334 L706 314 L709 295 L712 277 L715 260 L716 243 L716 225 L715 207 L716 189 L718 170 L723 150 L732 131 L744 114 L760 97 L779 83 L801 71 L824 60 L848 51 L874 43 L899 37 L926 32 L953 29 L980 28 L1007 29 L1034 34 L1059 41 L1083 51 L1104 64 L1122 78 L1139 92 L1154 107 L1168 120 L1183 134 L1199 146 L1217 159 L1235 172 L1253 186 L1270 203 L1284 220 L1294 240Z"/>
+<path d="M1356 260 L1354 284 L1346 308 L1334 330 L1317 351 L1299 370 L1279 388 L1259 405 L1239 421 L1219 437 L1198 452 L1175 466 L1151 479 L1125 490 L1098 499 L1069 505 L1039 509 L1010 511 L980 512 L950 511 L921 510 L890 508 L859 506 L828 502 L796 496 L765 487 L737 475 L712 459 L691 440 L676 418 L667 394 L662 370 L662 346 L664 323 L667 301 L670 280 L671 260 L671 240 L669 219 L668 198 L668 176 L670 153 L677 130 L688 108 L703 88 L722 69 L745 53 L770 38 L797 26 L826 15 L855 6 L885 -2 L916 -8 L948 -12 L980 -13 L1012 -11 L1043 -5 L1072 5 L1099 17 L1123 32 L1145 48 L1164 65 L1182 81 L1200 97 L1219 111 L1239 126 L1261 140 L1283 155 L1305 172 L1325 192 L1341 213 L1352 236Z"/>
+<path d="M1412 260 L1408 288 L1397 315 L1382 340 L1362 363 L1341 385 L1319 405 L1297 425 L1275 444 L1253 462 L1229 480 L1204 497 L1176 512 L1146 524 L1115 534 L1082 541 L1048 545 L1014 548 L980 549 L946 549 L911 549 L876 548 L840 546 L803 542 L766 534 L731 524 L699 508 L671 489 L649 466 L634 440 L625 412 L621 384 L621 357 L624 331 L626 306 L628 283 L627 260 L625 237 L622 213 L619 188 L619 163 L622 136 L630 110 L643 85 L661 62 L684 41 L711 22 L740 6 L771 -9 L803 -21 L836 -32 L871 -42 L906 -49 L943 -53 L980 -54 L1017 -51 L1052 -43 L1085 -31 L1116 -16 L1143 1 L1167 20 L1189 39 L1211 56 L1232 73 L1255 89 L1280 104 L1307 120 L1333 138 L1359 158 L1381 180 L1398 205 L1409 232Z"/>
+<path d="M1467 260 L1460 291 L1447 321 L1428 349 L1406 375 L1383 399 L1359 422 L1335 444 L1312 466 L1287 487 L1261 508 L1232 527 L1201 543 L1167 557 L1131 568 L1094 576 L1056 581 L1018 584 L980 586 L941 588 L902 589 L861 589 L819 587 L777 582 L735 574 L696 561 L660 542 L630 519 L608 491 L592 461 L584 429 L581 398 L582 367 L584 339 L586 311 L586 286 L583 260 L578 234 L573 207 L569 179 L569 149 L573 119 L583 90 L599 62 L620 36 L647 13 L677 -8 L709 -26 L744 -43 L780 -57 L818 -71 L856 -81 L897 -90 L938 -94 L980 -94 L1021 -90 L1061 -80 L1098 -66 L1132 -48 L1162 -29 L1189 -8 L1214 12 L1239 31 L1265 49 L1293 65 L1323 82 L1355 100 L1386 120 L1415 143 L1439 169 L1457 198 L1466 228Z"/>
+<path d="M1521 260 L1511 294 L1494 327 L1472 358 L1448 386 L1423 413 L1398 439 L1373 464 L1348 489 L1321 513 L1292 536 L1260 557 L1226 575 L1188 590 L1148 602 L1107 611 L1065 617 L1023 621 L980 625 L937 628 L892 630 L846 631 L798 630 L751 625 L704 614 L660 598 L622 576 L591 548 L568 516 L553 481 L545 446 L543 411 L544 377 L546 346 L546 317 L543 288 L537 260 L530 231 L523 200 L518 168 L518 135 L523 102 L536 70 L555 39 L580 11 L610 -14 L643 -37 L679 -58 L717 -77 L757 -94 L799 -109 L842 -121 L887 -130 L933 -135 L980 -134 L1026 -128 L1070 -116 L1110 -99 L1147 -79 L1180 -58 L1210 -36 L1239 -14 L1269 5 L1300 23 L1333 41 L1369 58 L1405 78 L1440 101 L1472 127 L1498 157 L1515 190 L1523 225Z"/>
+<path d="M1574 260 L1560 298 L1540 333 L1516 366 L1489 397 L1463 427 L1437 455 L1411 483 L1384 511 L1355 538 L1323 563 L1288 586 L1250 606 L1208 622 L1164 635 L1119 645 L1073 652 L1027 658 L980 664 L932 669 L882 673 L830 675 L777 674 L723 668 L672 655 L625 636 L584 609 L552 577 L529 540 L515 501 L509 462 L507 423 L507 387 L507 354 L505 322 L499 291 L490 260 L480 228 L472 194 L466 158 L466 121 L474 85 L489 50 L511 17 L539 -14 L573 -42 L610 -67 L649 -90 L691 -111 L734 -130 L780 -147 L828 -161 L877 -171 L929 -175 L980 -173 L1030 -165 L1078 -151 L1122 -132 L1162 -109 L1198 -86 L1232 -63 L1265 -41 L1299 -22 L1336 -3 L1375 15 L1416 34 L1458 56 L1497 81 L1531 111 L1557 145 L1573 182 L1579 221Z"/>
+<path d="M1625 260 L1608 301 L1584 339 L1558 375 L1530 408 L1502 440 L1475 472 L1448 503 L1420 533 L1389 563 L1354 591 L1316 615 L1274 637 L1228 654 L1180 668 L1132 679 L1082 688 L1032 696 L980 704 L927 711 L871 717 L813 720 L754 719 L696 711 L640 696 L590 673 L548 642 L515 604 L493 563 L480 520 L473 477 L471 436 L471 397 L468 362 L462 328 L453 294 L441 260 L429 224 L418 187 L413 147 L414 107 L424 68 L442 30 L468 -6 L500 -39 L536 -69 L577 -96 L619 -122 L664 -145 L711 -167 L761 -186 L813 -201 L868 -211 L924 -215 L980 -211 L1034 -201 L1086 -184 L1133 -162 L1176 -138 L1215 -114 L1253 -90 L1291 -69 L1331 -50 L1373 -31 L1419 -13 L1466 8 L1513 32 L1555 61 L1591 95 L1617 134 L1631 175 L1633 218Z"/>
+<path d="M1674 260 L1653 304 L1627 345 L1599 383 L1570 419 L1542 454 L1514 488 L1486 522 L1456 556 L1423 588 L1385 618 L1343 644 L1297 667 L1248 685 L1196 700 L1144 713 L1090 724 L1036 735 L980 745 L922 755 L860 763 L797 767 L732 765 L668 755 L609 737 L556 709 L512 673 L480 630 L458 584 L446 537 L440 491 L437 448 L434 407 L428 370 L419 333 L405 297 L390 260 L375 221 L363 179 L358 137 L362 93 L374 51 L396 10 L425 -28 L460 -63 L500 -95 L543 -125 L589 -154 L637 -180 L688 -204 L742 -225 L799 -241 L858 -251 L919 -253 L980 -247 L1038 -234 L1093 -215 L1143 -192 L1190 -167 L1233 -142 L1275 -118 L1318 -98 L1364 -79 L1413 -61 L1465 -42 L1519 -19 L1570 8 L1615 41 L1651 79 L1676 122 L1688 168 L1686 214Z"/>
+<path d="M1721 260 L1697 306 L1669 350 L1639 391 L1609 430 L1581 468 L1553 505 L1524 542 L1492 578 L1456 613 L1415 644 L1370 672 L1320 696 L1267 715 L1212 732 L1156 747 L1099 761 L1041 775 L980 788 L916 801 L849 810 L779 815 L709 812 L640 799 L577 777 L523 744 L479 703 L447 655 L425 605 L413 554 L407 505 L402 459 L397 417 L387 378 L373 339 L355 300 L336 260 L319 217 L307 172 L303 126 L309 79 L325 34 L350 -9 L383 -50 L422 -87 L464 -122 L510 -155 L559 -186 L610 -215 L665 -241 L723 -263 L785 -280 L849 -289 L915 -290 L980 -282 L1042 -266 L1100 -245 L1154 -220 L1203 -194 L1250 -170 L1297 -147 L1347 -128 L1399 -110 L1456 -92 L1515 -72 L1573 -48 L1628 -17 L1676 20 L1712 63 L1734 110 L1743 160 L1737 211Z"/>
+<path d="M294 620 L294 622 L293 624 L292 626 L290 628 L289 630 L288 632 L287 634 L285 635 L283 637 L281 639 L279 640 L276 641 L274 642 L271 643 L269 644 L266 644 L263 645 L260 645 L257 646 L254 646 L251 646 L247 646 L244 645 L242 644 L239 642 L237 640 L235 638 L234 636 L233 634 L232 632 L232 630 L231 628 L230 626 L229 624 L229 622 L228 620 L227 618 L227 616 L227 614 L228 611 L229 609 L230 607 L232 605 L234 604 L236 602 L238 600 L240 599 L243 598 L245 597 L248 596 L251 595 L254 594 L257 594 L260 595 L263 595 L266 596 L268 597 L271 598 L273 599 L276 600 L278 601 L281 602 L283 603 L286 604 L289 605 L291 607 L293 609 L294 611 L295 613 L295 615 L295 618Z"/>
+<path d="M346 620 L344 625 L342 631 L339 636 L336 641 L333 645 L330 650 L327 655 L323 659 L318 663 L313 667 L307 670 L301 673 L295 675 L288 677 L281 679 L275 681 L267 683 L260 684 L252 686 L244 686 L236 686 L228 685 L221 683 L214 680 L208 675 L203 671 L199 666 L195 660 L193 655 L191 650 L189 645 L187 640 L185 635 L182 630 L180 625 L178 620 L177 615 L177 609 L177 604 L179 598 L182 593 L185 588 L189 583 L194 579 L199 575 L204 571 L210 567 L216 564 L223 561 L230 558 L237 557 L245 556 L252 556 L260 557 L267 558 L274 560 L281 562 L287 565 L294 567 L300 569 L306 571 L313 573 L320 576 L327 579 L333 582 L338 586 L343 591 L346 597 L348 603 L348 608 L348 614Z"/>
+<path d="M397 620 L394 629 L390 637 L386 645 L382 653 L378 661 L373 668 L367 675 L360 682 L353 689 L344 694 L335 700 L325 704 L315 708 L305 712 L294 715 L283 718 L272 721 L260 724 L247 726 L235 727 L221 727 L209 725 L197 721 L186 715 L176 708 L169 701 L163 692 L158 684 L154 675 L150 667 L146 659 L143 652 L139 644 L135 636 L131 628 L128 620 L126 611 L126 602 L127 594 L130 585 L134 577 L140 569 L147 561 L154 554 L162 547 L171 541 L180 535 L190 530 L200 525 L212 521 L224 519 L236 518 L248 518 L260 520 L272 522 L283 525 L293 528 L303 532 L314 535 L324 538 L335 541 L346 544 L358 548 L368 553 L379 559 L387 566 L394 574 L399 583 L401 592 L401 602 L400 611Z"/>
+<path d="M448 620 L443 632 L438 643 L433 654 L427 665 L422 676 L415 686 L407 696 L398 706 L387 714 L375 722 L363 729 L350 735 L336 741 L322 746 L307 751 L292 756 L277 761 L260 765 L243 768 L225 769 L207 768 L189 764 L173 759 L158 751 L146 741 L136 730 L128 718 L121 706 L115 695 L110 684 L104 674 L98 664 L92 653 L86 643 L80 632 L76 620 L74 608 L74 596 L76 583 L81 572 L87 560 L95 549 L104 539 L114 529 L125 520 L137 511 L149 503 L163 496 L178 489 L194 485 L210 482 L227 481 L244 482 L260 484 L276 487 L291 491 L305 495 L320 499 L334 502 L349 506 L365 509 L380 514 L396 519 L412 526 L425 534 L437 544 L445 556 L451 569 L453 582 L453 595 L451 608Z"/>
+<path d="M497 620 L492 635 L486 649 L480 664 L473 677 L466 691 L457 704 L447 717 L435 729 L421 739 L406 749 L390 758 L374 766 L356 773 L339 780 L321 788 L302 794 L281 801 L260 806 L238 810 L215 811 L192 809 L169 804 L149 796 L131 785 L116 772 L104 758 L94 743 L85 729 L77 715 L70 701 L62 689 L53 676 L44 663 L36 649 L29 635 L24 620 L21 605 L21 589 L25 573 L31 558 L40 544 L50 530 L62 517 L75 505 L88 493 L103 481 L119 471 L137 462 L156 454 L176 449 L197 445 L218 445 L239 446 L260 449 L280 453 L299 458 L317 462 L336 466 L355 470 L374 473 L395 477 L416 482 L436 489 L456 498 L473 510 L487 523 L497 538 L503 554 L506 571 L505 588 L502 604Z"/>
+<path d="M546 620 L540 638 L533 656 L526 673 L519 690 L510 706 L499 722 L486 737 L472 752 L455 764 L437 776 L417 787 L398 796 L377 806 L356 815 L334 825 L311 834 L286 842 L260 849 L233 853 L204 854 L177 851 L150 844 L126 833 L105 819 L87 803 L73 785 L61 768 L50 751 L40 734 L29 719 L18 703 L7 688 L-5 673 L-15 656 L-24 638 L-30 620 L-33 601 L-31 582 L-26 563 L-18 545 L-7 528 L5 511 L19 495 L35 480 L51 465 L69 451 L89 439 L110 428 L134 419 L158 413 L184 410 L210 409 L235 411 L260 415 L284 420 L306 425 L329 429 L352 433 L376 436 L400 440 L426 444 L452 450 L478 459 L501 470 L521 484 L537 501 L548 520 L555 541 L557 561 L555 581 L551 601Z"/>
+<path d="M594 620 L588 641 L581 662 L573 682 L564 702 L554 722 L541 740 L526 758 L508 774 L488 789 L467 803 L444 815 L421 827 L398 839 L373 851 L348 862 L320 874 L291 884 L260 892 L227 896 L194 896 L162 892 L131 882 L104 868 L80 851 L60 832 L43 812 L28 792 L15 772 L2 754 L-11 736 L-26 719 L-41 701 L-55 683 L-68 663 L-78 642 L-85 620 L-87 598 L-84 575 L-78 553 L-67 532 L-54 511 L-40 492 L-23 473 L-5 455 L14 438 L35 421 L58 407 L84 394 L112 385 L141 378 L172 375 L202 376 L231 378 L260 383 L287 388 L314 392 L341 396 L369 399 L397 402 L427 405 L459 410 L490 417 L520 427 L547 442 L570 459 L588 480 L599 503 L606 527 L607 551 L605 575 L600 598Z"/>
+<path d="M642 620 L636 644 L628 668 L620 692 L610 714 L598 737 L583 758 L565 778 L544 797 L521 814 L497 829 L471 844 L445 858 L419 872 L391 887 L362 901 L330 915 L296 927 L260 935 L222 940 L184 939 L147 932 L113 920 L82 903 L55 882 L33 860 L14 837 L-3 815 L-19 793 L-35 773 L-53 754 L-71 734 L-89 714 L-107 693 L-122 670 L-134 646 L-140 620 L-142 594 L-138 568 L-129 543 L-117 518 L-102 495 L-85 473 L-66 451 L-46 430 L-24 410 L1 391 L28 375 L58 361 L91 351 L125 345 L160 342 L194 343 L228 347 L260 351 L291 356 L322 360 L353 363 L385 365 L420 366 L455 369 L492 374 L529 383 L563 395 L594 413 L619 434 L638 459 L650 485 L656 513 L656 541 L654 569 L649 595Z"/>
+<path d="M691 620 L684 647 L677 674 L668 701 L657 727 L643 752 L625 776 L604 799 L580 819 L554 838 L527 855 L498 872 L470 889 L440 906 L409 924 L376 941 L340 957 L301 970 L260 979 L217 983 L174 980 L133 971 L95 956 L61 936 L32 912 L8 887 L-14 862 L-34 837 L-53 815 L-73 793 L-95 772 L-118 750 L-140 728 L-161 703 L-178 677 L-190 649 L-196 620 L-197 590 L-191 561 L-181 533 L-166 505 L-149 479 L-130 453 L-110 428 L-87 404 L-62 382 L-33 361 L-2 343 L33 328 L70 318 L109 312 L148 311 L187 312 L224 316 L260 320 L295 324 L330 327 L365 328 L403 329 L443 330 L484 332 L527 338 L568 348 L607 363 L640 384 L667 409 L687 437 L699 468 L704 500 L705 532 L702 562 L697 592Z"/>
+
+    </svg>
+    <div class="wrap">
+      <p class="eyebrow">Field notes from the trail</p>
+      <h1>Tyler<br>Lahti, <em>outside.</em></h1>
+      <ul class="roles" aria-label="What I do">
+        <li>Trail runner</li>
+        <li>Ultrarunner</li>
+        <li>Drone photographer</li>
+        <li>Peak bagger</li>
+      </ul>
+      <p class="lede">Chasing long miles, high summits, and the view from above. Here's where to find the routes, the results, and the photos.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#adventures">See the adventures
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/tylerlahti/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Adventures -->
+    <section class="block" id="adventures">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-num">01 — Adventures</span>
+          <div>
+            <h2>Routes, races &amp; summits</h2>
+            <p>The record of where the legs have gone.</p>
+          </div>
         </div>
+        <div class="section-body">
+          <a class="feature" href="https://fastestknowntime.com/fkt/tyler-lahti-bartram-trail-nc-ga-2020-11-07" target="_blank" rel="noopener noreferrer">
+            <div class="feature-text">
+              <div>
+                <span class="tag">Fastest Known Time · Nov 2020</span>
+                <h3>Bartram Trail, Georgia section</h3>
+                <p>The FKT on the Georgia stretch of the Bartram Trail through the southern Appalachians.</p>
+              </div>
+              <span class="more">View on FastestKnownTime
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+            <div class="feature-art" aria-hidden="true">
+              <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#2b2723"/><stop offset="1" stop-color="#4a3a2c"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="260" fill="url(#sky)"/>
+                <circle cx="300" cy="78" r="26" fill="#e0814c" opacity=".9"/>
+                <path d="M0 200 L60 150 L110 175 L170 110 L230 160 L280 125 L340 170 L400 140 L400 260 L0 260Z" fill="#3a4a35"/>
+                <path d="M0 225 L70 190 L140 212 L210 180 L270 205 L330 185 L400 210 L400 260 L0 260Z" fill="#25301f"/>
+                <path d="M20 245 C 90 230, 120 200, 175 192 S 260 168, 300 150 S 360 120, 380 112" fill="none" stroke="#f4f1ea" stroke-width="2.2" stroke-dasharray="2 7" stroke-linecap="round"/>
+                <circle cx="20" cy="245" r="5" fill="#f4f1ea"/>
+                <circle cx="380" cy="112" r="5" fill="#e0814c" stroke="#f4f1ea" stroke-width="2"/>
+              </svg>
+            </div>
+          </a>
+
+          <ul class="log">
+            <li>
+              <a href="https://ultrasignup.com/results_participant.aspx?fname=Tyler&amp;lname=Lahti" target="_blank" rel="noopener noreferrer">
+                <span class="kind">Races</span>
+                <span class="title">Ultra results<span class="desc">Every finish line, on UltraSignup.</span></span>
+                <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://peakbagger.com/climber/climber.aspx?cid=31816" target="_blank" rel="noopener noreferrer">
+                <span class="kind">Summits</span>
+                <span class="title">Peakbagger log<span class="desc">The running list of peaks climbed.</span></span>
+                <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://trailrunner.com/trail-news/25th-anniversary-challenge-trail-runner-profile-tyler-lahti/" target="_blank" rel="noopener noreferrer">
+                <span class="kind">Press</span>
+                <span class="title">Trail Runner Magazine<span class="desc">Profiled for the 25th Anniversary Challenge.</span></span>
+                <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <section id="adventures">
-        <h2>Adventures & Achievements</h2>
-        <div class="links-list">
-            <a href="https://fastestknowntime.com/fkt/tyler-lahti-bartram-trail-nc-ga-2020-11-07" class="link-item" target="_blank" rel="noopener noreferrer">
-                <svg class="link-icon" viewBox="0 0 24 24">
-                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                </svg>
-                <span class="link-text">Bartram Trail - GA Section FKT</span>
-                <svg class="link-arrow" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-            <a href="https://ultrasignup.com/results_participant.aspx?fname=Tyler&lname=Lahti" class="link-item" target="_blank" rel="noopener noreferrer">
-                <svg class="link-icon" viewBox="0 0 24 24">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                    <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-                <span class="link-text">Ultrasignup Race Results</span>
-                <svg class="link-arrow" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-            <a href="https://peakbagger.com/climber/climber.aspx?cid=31816" class="link-item" target="_blank" rel="noopener noreferrer">
-                <svg class="link-icon" viewBox="0 0 24 24">
-                    <path d="M 3 20 L 9 4 L 15 14 L 21 8 L 21 20 Z"/>
-                </svg>
-                <span class="link-text">Peakbagger Summit Log</span>
-                <svg class="link-arrow" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-            <a href="https://trailrunner.com/trail-news/25th-anniversary-challenge-trail-runner-profile-tyler-lahti/" class="link-item" target="_blank" rel="noopener noreferrer">
-                <svg class="link-icon" viewBox="0 0 24 24">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                    <line x1="16" y1="13" x2="8" y2="13"/>
-                    <line x1="16" y1="17" x2="8" y2="17"/>
-                </svg>
-                <span class="link-text">Trail Runner Magazine Profile</span>
-                <svg class="link-arrow" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-            <a href="https://en.wikipedia.org/wiki/Special:Contributions/Lahti213" class="link-item" target="_blank" rel="noopener noreferrer">
-                <svg class="link-icon" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                    <line x1="2" y1="12" x2="22" y2="12"/>
-                </svg>
-                <span class="link-text">Wikipedia Contributions</span>
-                <svg class="link-arrow" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
+    <!-- Photos -->
+    <section class="block" id="photos">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-num">02 — Photos</span>
+          <div>
+            <h2>The view from up there</h2>
+            <p>Landscapes from the ground and the air. Free to use under Creative Commons.</p>
+          </div>
         </div>
-    </section>
-
-    <section id="gallery">
-        <h2>Photography</h2>
         <div class="gallery">
-            <div class="gallery-item">
-                <img src="https://live.staticflickr.com/65535/51836169426_e3ae10142a_k.jpg" alt="Oak Mountain Lake">
-                <div class="gallery-overlay">
-                    <p class="gallery-credit">Tyler Lahti, CC BY-SA 2.0</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://live.staticflickr.com/65535/51793067154_205dadb22c_k.jpg" alt="Downtown Connector">
-                <div class="gallery-overlay">
-                    <p class="gallery-credit">Lahti213, CC BY-SA 4.0</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://live.staticflickr.com/65535/51799008042_e3d33a86d3_k.jpg" alt="Aunt Fanny's Cabin">
-                <div class="gallery-overlay">
-                    <p class="gallery-credit">Tyler Lahti, CC BY-SA 2.0</p>
-                </div>
-            </div>
+          <figure class="shot">
+            <img src="https://live.staticflickr.com/65535/51836169426_e3ae10142a_k.jpg" alt="Oak Mountain Lake" loading="lazy" decoding="async">
+            <figcaption><span class="place">Oak Mountain Lake</span><span class="credit">Tyler Lahti<br>CC BY-SA 2.0</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="https://live.staticflickr.com/65535/51793067154_205dadb22c_k.jpg" alt="Downtown Connector" loading="lazy" decoding="async">
+            <figcaption><span class="place">Downtown Connector</span><span class="credit">Lahti213<br>CC BY-SA 4.0</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="https://live.staticflickr.com/65535/51799008042_e3d33a86d3_k.jpg" alt="Aunt Fanny's Cabin" loading="lazy" decoding="async">
+            <figcaption><span class="place">Aunt Fanny's Cabin</span><span class="credit">Tyler Lahti<br>CC BY-SA 2.0</span></figcaption>
+          </figure>
         </div>
+        <div class="gallery-foot">
+          <span>More drone shots on Instagram, full-resolution originals on Flickr.</span>
+          <a href="https://www.flickr.com/people/190991262@N04/" target="_blank" rel="noopener noreferrer">Browse the full archive →</a>
+        </div>
+      </div>
     </section>
-</main>
 
-<footer>
-    <p>&copy; 2026 Tyler Lahti. All photography licensed under Creative Commons.</p>
-    <p>Built for adventure enthusiasts and outdoor lovers.</p>
-</footer>
-```
+    <!-- Elsewhere -->
+    <section class="block" id="elsewhere">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-num">03 — Elsewhere</span>
+          <div>
+            <h2>Find me around the web</h2>
+          </div>
+        </div>
+        <div class="links">
+          <a class="link-card" href="https://www.instagram.com/lahti_drone" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>
+            <strong>Dronestagram</strong>
+            <span>Mountains and trails from above.</span>
+            <span class="handle">@lahti_drone</span>
+          </a>
+          <a class="link-card" href="https://www.flickr.com/people/190991262@N04/" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="7" cy="12" r="4"/><circle cx="17" cy="12" r="4" fill="currentColor"/></svg>
+            <strong>Flickr</strong>
+            <span>Outdoor photography, Creative Commons licensed.</span>
+            <span class="handle">flickr.com/people/190991262@N04</span>
+          </a>
+          <a class="link-card" href="https://en.wikipedia.org/wiki/Special:Contributions/Lahti213" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+            <strong>Wikipedia</strong>
+            <span>Edits and photo contributions.</span>
+            <span class="handle">User:Lahti213</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Tyler Lahti. Photography licensed under Creative Commons.</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
 </body>
 </html>

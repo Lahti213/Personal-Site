@@ -9,12 +9,12 @@ A modern, fast, and beautiful personal landing page showcasing outdoor adventure
 - Clean, editorial magazine-style aesthetic
 - Smooth animations and transitions
 - Fully responsive mobile-first design
-- Custom serif/sans-serif font pairing (Crimson Pro + DM Sans)
+- Fraunces + DM Sans + DM Mono type pairing, automatic light/dark mode
 
 🎨 **Visual Design**
 
 - Earth-toned color palette inspired by trails and mountains
-- Gradient backgrounds with subtle animations
+- Topographic contour hero, respects reduced-motion preferences
 - Interactive hover effects on all links and cards
 - Photo gallery with overlay captions
 
