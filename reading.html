@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading — Tyler Lahti</title>
+  <meta name="description" content="What Tyler Lahti is reading now, plus a few favorites from 2026.">
+  <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161412" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://lahti.co/reading.html">
+  <meta property="og:url" content="https://lahti.co/reading.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Reading — Tyler Lahti">
+  <meta property="og:description" content="On the nightstand now, and a few favorites from 2026.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23c4622d'/%3E%3Cpath d='M4 25 L12 11 L17 19 L21 14 L28 25 Z' fill='%23f4f1ea'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --surface: #fffdf8;
+      --ink: #1d1a17;
+      --ink-soft: #5a524a;
+      --line: #ddd5c7;
+      --accent: #c4622d;
+      --accent-ink: #a64f20;
+      --moss: #5f7350;
+      --shadow: 0 1px 2px rgba(29,26,23,.06), 0 8px 24px rgba(29,26,23,.06);
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --font-mono: 'DM Mono', ui-monospace, monospace;
+      --max: 1120px;
+      /* cover palette: earthy, works on both themes */
+      --c-clay: #b85a2a;
+      --c-moss: #4f6343;
+      --c-slate: #3f5866;
+      --c-ochre: #b08a3a;
+      --c-bark: #4a3a2e;
+      --c-plum: #6a4a52;
+      --c-cream: #f4ecdc;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #161412;
+        --surface: #1f1c19;
+        --ink: #f1ece3;
+        --ink-soft: #b2a898;
+        --line: #353029;
+        --accent: #e0814c;
+        --accent-ink: #f09a68;
+        --moss: #9db38b;
+        --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body); background: var(--bg); color: var(--ink);
+      line-height: 1.6; font-size: 17px; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--bg); padding: 8px 12px; border-radius: 6px; z-index: 10; }
+    .skip:focus { left: 8px; }
+
+    /* Nav (matches index.html) */
+    .nav {
+      position: sticky; top: 0; z-index: 5;
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; text-decoration: none; letter-spacing: -0.01em; }
+    .brand span { color: var(--accent); }
+    .nav ul { list-style: none; display: flex; gap: 28px; }
+    .nav ul a { text-decoration: none; font-size: .92rem; color: var(--ink-soft); transition: color .2s; }
+    .nav ul a:hover, .nav ul a[aria-current] { color: var(--ink); }
+
+    /* Header */
+    .page-head { padding: 80px 0 56px; }
+    .eyebrow {
+      font-family: var(--font-mono); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--moss); display: flex; align-items: center; gap: 10px; margin-bottom: 24px;
+    }
+    .eyebrow::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+    h1 {
+      font-family: var(--font-display); font-variation-settings: 'opsz' 144; font-weight: 800;
+      font-size: clamp(3rem, 9vw, 6.5rem); line-height: .95; letter-spacing: -0.035em;
+    }
+    h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .lede { max-width: 560px; margin-top: 24px; font-size: 1.15rem; color: var(--ink-soft); }
+
+    /* Sections */
+    section.block { padding: 72px 0; border-top: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: 220px 1fr; gap: 32px; margin-bottom: 40px; align-items: baseline; }
+    .section-num { font-family: var(--font-mono); font-size: .8rem; color: var(--ink-soft); letter-spacing: .06em; text-transform: uppercase; }
+    h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.05; letter-spacing: -0.02em; }
+    h2 + p { color: var(--ink-soft); margin-top: 12px; max-width: 560px; }
+
+    /* Typographic book covers */
+    .cover {
+      --c: var(--c-clay);
+      position: relative; aspect-ratio: 2 / 3; border-radius: 4px 10px 10px 4px; overflow: hidden;
+      background: var(--c); color: var(--c-cream);
+      padding: 18% 12% 12% 16%;
+      display: flex; flex-direction: column; justify-content: space-between;
+      box-shadow: var(--shadow), inset 6px 0 0 rgba(0,0,0,.18), inset 8px 0 0 rgba(255,255,255,.06);
+      transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s;
+    }
+    .cover::after { /* faint topo rings, a nod to the home page */
+      content: ''; position: absolute; right: -30%; bottom: -25%; width: 90%; aspect-ratio: 1; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 0 0 14px transparent, 0 0 0 15px rgba(255,255,255,.09), 0 0 0 30px transparent, 0 0 0 31px rgba(255,255,255,.06);
+      pointer-events: none;
+    }
+    .cover .c-title { font-family: var(--font-display); font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; text-wrap: balance; }
+    .cover .c-rule { width: 32px; height: 2px; background: currentColor; opacity: .55; margin: 14px 0; }
+    .cover .c-author { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; opacity: .85; }
+    .book:hover .cover { transform: translateY(-4px) rotate(-1deg); }
+
+    .clay  { --c: var(--c-clay); }
+    .moss  { --c: var(--c-moss); }
+    .slate { --c: var(--c-slate); }
+    .ochre { --c: var(--c-ochre); }
+    .bark  { --c: var(--c-bark); }
+    .plum  { --c: var(--c-plum); }
+
+    .book { list-style: none; }
+    .meta { margin-top: 16px; }
+    .meta .tag { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink); }
+    .meta h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; line-height: 1.2; margin-top: 4px; letter-spacing: -0.01em; }
+    .meta p { color: var(--ink-soft); font-size: .95rem; }
+
+    /* Now reading: big covers */
+    .now { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .now .cover .c-title { font-size: 1.6rem; }
+    .now .meta h3 { font-size: 1.35rem; }
+
+    /* Past reads: shelf */
+    .shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 36px 24px; }
+    .shelf .cover .c-title { font-size: 1.1rem; }
+    .shelf .cover { padding: 16% 12% 12% 15%; }
+
+    .note { margin-top: 48px; color: var(--ink-soft); font-size: .92rem; }
+    .note a { color: var(--accent-ink); font-weight: 500; text-decoration: none; }
+    .note a:hover { text-decoration: underline; }
+
+    footer { border-top: 1px solid var(--line); padding: 40px 0 56px; color: var(--ink-soft); font-size: .9rem; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    footer a { color: var(--ink); }
+
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .page-head .eyebrow, .page-head h1, .page-head .lede { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+    .page-head h1 { animation-delay: .08s; }
+    .page-head .lede { animation-delay: .18s; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+
+    @media (max-width: 900px) {
+      .section-head { grid-template-columns: 1fr; gap: 10px; }
+      .now { gap: 20px; }
+      .now .cover .c-title { font-size: 1.25rem; }
+    }
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      .wrap { padding: 0 16px; }
+      .nav ul { gap: 18px; }
+      .nav ul li:nth-child(n+3):not(.keep) { display: none; }
+      .page-head { padding: 56px 0 40px; }
+      section.block { padding: 56px 0; }
+      .now { grid-template-columns: 1fr; gap: 28px; }
+      .now .book { display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: center; }
+      .now .meta { margin-top: 0; }
+      .now .cover .c-title { font-size: .95rem; }
+      .now .cover .c-rule { margin: 8px 0; }
+      .now .cover .c-author { font-size: .55rem; }
+      .shelf { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary">
+    <div class="wrap">
+      <a class="brand" href="index.html">Tyler Lahti<span>.</span></a>
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#adventures">Adventures</a></li>
+        <li><a href="index.html#photos">Photos</a></li>
+        <li><a href="index.html#elsewhere">Elsewhere</a></li>
+        <li class="keep"><a href="reading.html" aria-current="page">Reading</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-head" id="top">
+    <div class="wrap">
+      <p class="eyebrow">Off the trail</p>
+      <h1>On the <em>nightstand.</em></h1>
+      <p class="lede">Nearly all of these are on loan from the public library, one of the best things going. Here's what I'm reading now, plus a few books from this year that stuck with me.</p>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="block" id="now">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-num">01 — Now</span>
+          <div>
+            <h2>Currently reading</h2>
+            <p>Checked out and in progress as of November 2026.</p>
+          </div>
+        </div>
+        <ul class="now">
+          <li class="book">
+            <div class="cover moss" aria-hidden="true">
+              <span class="c-title">A Field Guide to the Mushrooms of Georgia</span>
+              <span><span class="c-rule" style="display:block"></span><span class="c-author">Alan E. Bessette</span></span>
+            </div>
+            <div class="meta">
+              <span class="tag">Field guide</span>
+              <h3>A Field Guide to the Mushrooms of Georgia</h3>
+              <p>Alan E. Bessette et al. · 2023</p>
+            </div>
+          </li>
+          <li class="book">
+            <div class="cover slate" aria-hidden="true">
+              <span class="c-title">There Is No Place for Us</span>
+              <span><span class="c-rule" style="display:block"></span><span class="c-author">Brian Goldstone</span></span>
+            </div>
+            <div class="meta">
+              <span class="tag">Nonfiction</span>
+              <h3>There Is No Place for Us: Working and Homeless in America</h3>
+              <p>Brian Goldstone · 2025</p>
+            </div>
+          </li>
+          <li class="book">
+            <div class="cover plum" aria-hidden="true">
+              <span class="c-title">Trad Wife</span>
+              <span><span class="c-rule" style="display:block"></span><span class="c-author">Sarah Langan</span></span>
+            </div>
+            <div class="meta">
+              <span class="tag">Fiction</span>
+              <h3>Trad Wife</h3>
+              <p>Sarah Langan · 2026</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" id="past">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-num">02 — 2026</span>
+          <div>
+            <h2>Good ones from this year</h2>
+            <p>A handful of favorites from 2026, newest first.</p>
+          </div>
+        </div>
+        <ul class="shelf">
+          <li class="book">
+            <div class="cover moss" aria-hidden="true"><span class="c-title">All That's Unseen</span><span><span class="c-rule" style="display:block"></span><span class="c-author">Emilee Hackney</span></span></div>
+            <div class="meta"><span class="tag">Memoir · Oct</span><h3>All That's Unseen: An Appalachian Memoir</h3><p>Emilee Hackney</p></div>
+          </li>
+          <li class="book">
+            <div class="cover ochre" aria-hidden="true"><span class="c-title">Theo of Golden</span><span><span class="c-rule" style="display:block"></span><span class="c-author">Allen Levi</span></span></div>
+            <div class="meta"><span class="tag">Fiction · Oct</span><h3>Theo of Golden</h3><p>Allen Levi</p></div>
+          </li>
+          <li class="book">
+            <div class="cover clay" aria-hidden="true"><span class="c-title">Comedy Comedy Comedy Drama</span><span><span class="c-rule" style="display:block"></span><span class="c-author">Bob Odenkirk</span></span></div>
+            <div class="meta"><span class="tag">Memoir · Oct</span><h3>Comedy Comedy Comedy Drama</h3><p>Bob Odenkirk</p></div>
+          </li>
+          <li class="book">
+            <div class="cover slate" aria-hidden="true"><span class="c-title">The Land and Its People</span><span><span class="c-rule" style="display:block"></span><span class="c-author">David Sedaris</span></span></div>
+            <div class="meta"><span class="tag">Essays · Sep</span><h3>The Land and Its People</h3><p>David Sedaris</p></div>
+          </li>
+          <li class="book">
+            <div class="cover bark" aria-hidden="true"><span class="c-title">Nuclear War: A Scenario</span><span><span class="c-rule" style="display:block"></span><span class="c-author">Annie Jacobsen</span></span></div>
+            <div class="meta"><span class="tag">Nonfiction · Aug</span><h3>Nuclear War: A Scenario</h3><p>Annie Jacobsen</p></div>
+          </li>
+          <li class="book">
+            <div class="cover clay" aria-hidden="true"><span class="c-title">The Calamity Club</span><span><span class="c-rule" style="display:block"></span><span class="c-author">Kathryn Stockett</span></span></div>
+            <div class="meta"><span class="tag">Fiction · Aug</span><h3>The Calamity Club</h3><p>Kathryn Stockett</p></div>
+          </li>
+          <li class="book">
+            <div class="cover slate" aria-hidden="true"><span class="c-title">Yesteryear</span><span><span class="c-rule" style="display:block"></span><span class="c-author">Caro Claire Burke</span></span></div>
+            <div class="meta"><span class="tag">Fiction · Aug</span><h3>Yesteryear</h3><p>Caro Claire Burke</p></div>
+          </li>
+          <li class="book">
+            <div class="cover plum" aria-hidden="true"><span class="c-title">Strangers</span><span><span class="c-rule" style="display:block"></span><span class="c-author">Belle Burden</span></span></div>
+            <div class="meta"><span class="tag">Memoir · Jul</span><h3>Strangers: A Memoir of Marriage</h3><p>Belle Burden</p></div>
+          </li>
+          <li class="book">
+            <div class="cover moss" aria-hidden="true"><span class="c-title">Declaring Independence</span><span><span class="c-rule" style="display:block"></span><span class="c-author">Edward J. Larson</span></span></div>
+            <div class="meta"><span class="tag">History · Jul</span><h3>Declaring Independence: Why 1776 Matters</h3><p>Edward J. Larson</p></div>
+          </li>
+        </ul>
+        <p class="note">Got a recommendation? <a href="index.html#elsewhere">Send it my way →</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Tyler Lahti.</span>
+      <span><a href="index.html">Home</a> · <a href="#top">Back to top ↑</a></span>
+    </div>
+  </footer>
+</body>
+</html>
