@@ -298,7 +298,7 @@
       body { font-size: 16px; }
       .wrap { padding: 0 16px; }
       .nav ul { gap: 18px; }
-      .nav ul li:nth-child(n+3) { display: none; }
+      .nav ul li:nth-child(n+3):not(.keep) { display: none; }
       .hero { padding: 64px 0 80px; }
       section.block { padding: 64px 0; }
       .feature-text { padding: 26px; }
@@ -326,6 +326,7 @@
         <li><a href="#adventures">Adventures</a></li>
         <li><a href="#photos">Photos</a></li>
         <li><a href="#elsewhere">Elsewhere</a></li>
+        <li class="keep"><a href="reading.html">Reading</a></li>
       </ul>
     </div>
   </nav>
@@ -567,7 +568,7 @@
   <footer>
     <div class="wrap">
       <span>© 2026 Tyler Lahti. Photography licensed under Creative Commons.</span>
-      <span class="foot-links"><a class="js-email" href="#elsewhere" data-u="3sremoob_nees" data-d="moc.duolci">Email</a> · <a href="#top">Back to top ↑</a></span>
+      <span class="foot-links"><a class="js-email" href="#elsewhere" data-u="3sremoob_nees" data-d="moc.duolci">Email</a> · <a href="reading.html">Reading</a> · <a href="#top">Back to top ↑</a></span>
     </div>
   </footer>
 
